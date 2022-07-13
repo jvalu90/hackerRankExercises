@@ -398,4 +398,65 @@ function birthdayCakeCandles(candles) {
   return counter
 }
 
-log(birthdayCakeCandles([3, 2, 1, 3])) //2
+//log(birthdayCakeCandles([3, 2, 1, 3])) //2
+
+/*
+Given a time in
+
+-hour AM/PM format, convert it to military (24-hour) time.
+
+Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
+- 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock.
+
+Example
+
+Return '12:01:00'.
+
+    Return '00:01:00'.
+
+Function Description
+
+Complete the timeConversion function in the editor below. It should return a new string representing the input time in 24 hour format.
+
+timeConversion has the following parameter(s):
+
+    string s: a time in 
+
+    hour format
+
+Returns
+
+    string: the time in 
+
+    hour format
+
+Input Format
+
+A single string
+that represents a time in -hour clock format (i.e.: or
+
+).
+
+Constraints
+
+    All input times are valid
+
+*/
+
+function timeConversion(s) {
+  s = s.split(':')
+
+
+  if (s[0] !== '12' && s[2].includes('PM')) {
+    s[0] = (parseInt(s[0]) + 12).toString();
+  } else if (s[0] === '12' && s[2].includes('AM')) {
+    s[0] = '00'
+  }
+
+  s[2] = s[2].replace('PM', '') // Expresion regular para reemplazar ambas de una sola vez
+  s[2] = s[2].replace('AM', '')
+  
+  return s.join(':')
+}
+
+log(timeConversion('07:05:45PM')) // 19:05:45
