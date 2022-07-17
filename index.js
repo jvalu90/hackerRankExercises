@@ -459,4 +459,86 @@ function timeConversion(s) {
   return s.join(':')
 }
 
-log(timeConversion('07:05:45PM')) // 19:05:45
+//log(timeConversion('07:05:45PM')) // 19:05:45
+
+/*
+Sherlock considers a string to be valid if all characters of the string appear the same number of times. It is also valid if he can remove just character at index in the string, and the remaining characters will occur the same number of times. Given a string
+
+, determine if it is valid. If so, return YES, otherwise return NO.
+
+Example
+This is a valid string because frequencies are
+
+.
+
+This is a valid string because we can remove one and have
+
+of each character in the remaining string.
+
+This string is not valid as we can only remove occurrence of . That leaves character frequencies of
+
+.
+
+Function Description
+
+Complete the isValid function in the editor below.
+
+isValid has the following parameter(s):
+
+    string s: a string
+
+Returns
+
+    string: either YES or NO
+
+Input Format
+
+A single string
+
+.
+
+Constraints
+
+Each character 
+*/
+
+function isValid(s) {
+  let validationObject = {};
+  let response = 'YES'
+  
+  for (let char of s) {
+    validationObject[char] === undefined? validationObject[char] = 1 : validationObject[char]++
+  }
+
+  const minChar = Math.min(...Object.values(validationObject))
+
+  const onesAndCeros = Object.values(validationObject).map(element => element - minChar)
+
+  if ((onesAndCeros.indexOf(0) === onesAndCeros.lastIndexOf(0))) {
+    onesAndCeros.splice(onesAndCeros.indexOf(0), 1)
+    for (let i = 0; i < onesAndCeros.length - 1; i++) {
+      if (onesAndCeros[i] !== onesAndCeros[i+1]) {
+        response = 'NO'
+        break
+      }
+    }
+  } else if ((onesAndCeros.indexOf(1) === onesAndCeros.lastIndexOf(1))) {
+    onesAndCeros.splice(onesAndCeros.indexOf(1), 1)
+    for (let i = 0; i < onesAndCeros.length - 1; i++) {
+      if (onesAndCeros[i] !== onesAndCeros[i+1]) {
+        response = 'NO'
+        break
+      }
+    }
+  } else {
+    response = 'NO'
+  }
+  
+  return response
+}
+
+log(isValid('aabbccddeefghi')) // NO
+log(isValid('abcdefghhgfedecba')) // YES
+log(isValid('aabbc')) // YES
+log(isValid('ibfdgaeadiaefgbhbdghhhbgdfgeiccbiehhfcggchgghadhdhagfbahhddgghbdehidbibaeaagaeeigffcebfbaieggabcfbiiedcabfihchdfabifahcbhagccbdfifhghcadfiadeeaheeddddiecaicbgigccageicehfdhdgafaddhffadigfhhcaedcedecafeacbdacgfgfeeibgaiffdehigebhhehiaahfidibccdcdagifgaihacihadecgifihbebffebdfbchbgigeccahgihbcbcaggebaaafgfedbfgagfediddghdgbgehhhifhgcedechahidcbchebheihaadbbbiaiccededchdagfhccfdefigfibifabeiaccghcegfbcghaefifbachebaacbhbfgfddeceababbacgffbagidebeadfihaefefegbghgddbbgddeehgfbhafbccidebgehifafgbghafacgfdccgifdcbbbidfifhdaibgigebigaedeaaiadegfefbhacgddhchgcbgcaeaieiegiffchbgbebgbehbbfcebciiagacaiechdigbgbghefcahgbhfibhedaeeiffebdiabcifgccdefabccdghehfibfiifdaicfedagahhdcbhbicdgibgcedieihcichadgchgbdcdagaihebbabhibcihicadgadfcihdheefbhffiageddhgahaidfdhhdbgciiaciegchiiebfbcbhaeagccfhbfhaddagnfieihghfbaggiffbbfbecgaiiidccdceadbbdfgigibgcgchafccdchgifdeieicbaididhfcfdedbhaadedfageigfdehgcdaecaebebebfcieaecfagfdieaefdiedbcadchabhebgehiidfcgahcdhcdhgchhiiheffiifeegcfdgbdeffhgeghdfhbfbifgidcafbfcd')) // YES
+log(isValid('xxxaabbccrry')) // NO
