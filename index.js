@@ -975,6 +975,28 @@ function birthday(s, d, m) {
   return counter
 }
 
-log(birthday([1, 2, 1, 3, 2], 3, 2)) // 2
-log(birthday([1, 1, 1, 1, 1, 1], 3, 2)) // 0
-log(birthday([4], 4, 1)) // 1
+//log(birthday([1, 2, 1, 3, 2], 3, 2)) // 2
+//log(birthday([1, 1, 1, 1, 1, 1], 3, 2)) // 0
+//log(birthday([4], 4, 1)) // 1
+
+/*
+Divisible Sum Pairs
+
+Given an array of integers and a positive integer k, determine the number of (i, j) pairs where i < j and arr[i] + arr[j] is divisible by
+k
+*/
+
+function divisibleSumPairs(n, k, ar) {
+  let counter = 0;
+  
+  for (let i = 0; i < n; i++) {
+    for (let j = 1; j < n; j++) {
+      if (i < j && (ar[i] + ar[j]) % k === 0) counter++
+    }    
+  }
+
+  return counter
+}
+
+log(divisibleSumPairs(6, 5, [1, 2, 3, 4, 5, 6])) // 3
+log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2])) // 5
