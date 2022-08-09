@@ -998,5 +998,28 @@ function divisibleSumPairs(n, k, ar) {
   return counter
 }
 
-log(divisibleSumPairs(6, 5, [1, 2, 3, 4, 5, 6])) // 3
-log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2])) // 5
+//log(divisibleSumPairs(6, 5, [1, 2, 3, 4, 5, 6])) // 3
+//log(divisibleSumPairs(6, 3, [1, 3, 2, 6, 1, 2])) // 5
+
+/*
+Migratory Birds
+
+Given an array of bird sightings where every element represents a bird type id, determine the id of the most frequently sighted type. If more than 1 type has been spotted that maximum amount, return the smallest of their ids.
+*/
+
+function migratoryBirds(arr) {
+
+  let arrayObject = {}
+
+  for (let element of arr) {
+    arrayObject[element] === undefined ? arrayObject[element] = 1 : arrayObject[element] += 1
+  }
+
+  let maxSighted = Math.max(...Object.values(arrayObject))
+
+  return Object.keys(arrayObject).filter(element => arrayObject[element] >= maxSighted)[0]
+}
+
+log(migratoryBirds([1, 1, 2, 2, 3])) // 1
+log(migratoryBirds([1, 4, 4, 4, 5, 3])) // 4
+log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4])) // 3
