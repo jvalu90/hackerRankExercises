@@ -1020,6 +1020,51 @@ function migratoryBirds(arr) {
   return Object.keys(arrayObject).filter(element => arrayObject[element] >= maxSighted)[0]
 }
 
-log(migratoryBirds([1, 1, 2, 2, 3])) // 1
-log(migratoryBirds([1, 4, 4, 4, 5, 3])) // 4
-log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4])) // 3
+//log(migratoryBirds([1, 1, 2, 2, 3])) // 1
+//log(migratoryBirds([1, 4, 4, 4, 5, 3])) // 4
+//log(migratoryBirds([1, 2, 3, 4, 5, 4, 3, 2, 1, 3, 4])) // 3
+
+/*
+Marie invented a Time Machine and wants to test it by time-traveling to visit Russia on the Day of the Programmer (the 256th day of the year) during a year in the inclusive range from 1700 to 2700.
+
+From 1700 to 1917, Russia's official calendar was the Julian calendar; since 1919 they used the Gregorian calendar system. The transition from the Julian to Gregorian calendar system occurred in 1918, when the next day after January 31st was February 14th. This means that in 1918, February 14th was the 32nd day of the year in Russia.
+
+In both calendar systems, February is the only month with a variable amount of days; it has 29 days during a leap year, and 28 days during all other years. In the Julian calendar, leap years are divisible by 4; in the Gregorian calendar, leap years are either of the following:
+
+    Divisible by 400.
+    Divisible by 4 and not divisible by 100.
+
+Given a year, y, find the date of the 256th day of that year according to the official Russian calendar during that year. Then print it in the format dd.mm.yyyy, where dd is the two-digit day, mm is the two-digit month, and yyyy is y
+
+.
+
+For example, the given year = 1984. 1984 is divisible by 4, so it is a leap year. The 256th day of a leap year after 1918 is September 12, so the answer is 12.09.1984
+*/
+
+function dayOfProgrammer(year) {
+  let day = 0
+  
+  if (year === 1918) {
+    day = 256 - 230
+  } else if (year >= 1700 && year <= 1917) {
+    if (year % 4 === 0) {
+      day = 256 - 244
+    } else {
+      day = 256 - 243
+    }
+  } else {
+    if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
+      day = 256 - 244
+    } else {
+      day = 256 - 243
+    }  
+  }
+
+  return `${day}.09.${year}`
+}
+
+log(dayOfProgrammer(1984)) // 12.09.1984
+log(dayOfProgrammer(2017)) // 13.09.2017
+log(dayOfProgrammer(2016)) // 12.09.2016
+log(dayOfProgrammer(1800)) // 12.09.1800
+log(dayOfProgrammer(1700)) // 12.09.1800
