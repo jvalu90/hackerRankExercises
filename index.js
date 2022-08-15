@@ -1063,8 +1063,45 @@ function dayOfProgrammer(year) {
   return `${day}.09.${year}`
 }
 
-log(dayOfProgrammer(1984)) // 12.09.1984
-log(dayOfProgrammer(2017)) // 13.09.2017
-log(dayOfProgrammer(2016)) // 12.09.2016
-log(dayOfProgrammer(1800)) // 12.09.1800
-log(dayOfProgrammer(1700)) // 12.09.1800
+//log(dayOfProgrammer(1984)) // 12.09.1984
+//log(dayOfProgrammer(2017)) // 13.09.2017
+//log(dayOfProgrammer(2016)) // 12.09.2016
+//log(dayOfProgrammer(1800)) // 12.09.1800
+//log(dayOfProgrammer(1700)) // 12.09.1800
+
+/*
+Bill Division
+
+Complete the bonAppetit function in the editor below. It should print Bon Appetit if the bill is fairly split. Otherwise, it should print the integer amount of money that Brian owes Anna.
+
+bonAppetit has the following parameter(s):
+
+    bill: an array of integers representing the cost of each item ordered
+    k: an integer representing the zero-based index of the item Anna doesn't eat
+    b: the amount of money that Anna contributed to the bill
+*/
+
+function bonAppetit(bill, k, b) {
+  let annasBill = 0; 
+  let response = ''
+  
+  //bill.splice(k, 1)
+  for (let i = 0; i < bill.length; i++) {
+    annasBill += bill[i]
+  }
+  
+  annasBill = (annasBill - bill[k]) / 2
+
+  //annasBill = bill.reduce((total, element) => total + element, 0) / 2;
+
+  if (annasBill === b) {
+    response = 'Bon Appetit'
+  } else {
+    response = 5
+  }
+
+  return response
+}
+
+log(bonAppetit([3, 10, 2, 9], 1, 12)) // 5
+log(bonAppetit([3, 10, 2, 9], 1, 7)) // Bon Appetit
