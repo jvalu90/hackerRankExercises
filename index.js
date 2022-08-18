@@ -1,4 +1,4 @@
-const log = arg => console.log(arg) 
+const log = arg => console.log(arg)
 
 /*
 A very big sum
@@ -84,7 +84,7 @@ Return the absolute difference between the sums of the matrix's two diagonals as
 function diagonalDifference(arr) {
   let leftToRightSum = 0;
   let rightToLeftSum = 0;
-  
+
   for (let i = 0; i < arr.length; i++) {
     leftToRightSum += arr[i][i]
     rightToLeftSum += arr[i][arr.length - i - 1]
@@ -156,8 +156,8 @@ function plusMinus(arr) {
   let positiveElements = 0
   let negativeElements = 0
   let ceroElements = 0
-  for(let element of arr) {
-    if(element > 0) {
+  for (let element of arr) {
+    if (element > 0) {
       positiveElements++
     } else if (element < 0) {
       negativeElements++
@@ -166,9 +166,9 @@ function plusMinus(arr) {
     }
   }
 
-  console.log((positiveElements/arr.length).toFixed(6))
-  console.log((negativeElements/arr.length).toFixed(6))
-  console.log((ceroElements/arr.length).toFixed(6))
+  console.log((positiveElements / arr.length).toFixed(6))
+  console.log((negativeElements / arr.length).toFixed(6))
+  console.log((ceroElements / arr.length).toFixed(6))
 }
 
 /*log(plusMinus([-4, 3, -9, 0, 4, 1]))  // 0.500000
@@ -249,7 +249,7 @@ The staircase is right-aligned, composed of # symbols and spaces, and has a heig
 function staircase(n) {
   for (let i = 1; i <= n; i++) {
     let row = Array(n).fill(' ')
-    console.log(row.fill('#', row.length -i).join(''))
+    console.log(row.fill('#', row.length - i).join(''))
   }
 }
 
@@ -342,12 +342,12 @@ function miniMaxSum(arr) {
   arr.sort((a, b) => a - b)
   let min = 0
   let max = 0
-  
-  for(let i = 0; i < arr.length -1; i++) {
+
+  for (let i = 0; i < arr.length - 1; i++) {
     min += arr[i]
-    max += arr[i+1]
+    max += arr[i + 1]
   }
-    
+
   console.log(min, max)
 }
 
@@ -392,7 +392,7 @@ function birthdayCakeCandles(candles) {
   const maxCandle = Math.max(...candles);
 
   candles.forEach(element => {
-    if(element === maxCandle) counter++
+    if (element === maxCandle) counter++
   })
 
   return counter
@@ -455,7 +455,7 @@ function timeConversion(s) {
 
   s[2] = s[2].replace('PM', '') // Expresion regular para reemplazar ambas de una sola vez
   s[2] = s[2].replace('AM', '')
-  
+
   return s.join(':')
 }
 
@@ -505,9 +505,9 @@ Each character
 function isValid(s) {
   let validationObject = {};
   let response = 'YES'
-  
+
   for (let char of s) {
-    validationObject[char] === undefined? validationObject[char] = 1 : validationObject[char]++
+    validationObject[char] === undefined ? validationObject[char] = 1 : validationObject[char]++
   }
 
   const minChar = Math.min(...Object.values(validationObject))
@@ -517,7 +517,7 @@ function isValid(s) {
   if ((onesAndCeros.indexOf(0) === onesAndCeros.lastIndexOf(0))) {
     onesAndCeros.splice(onesAndCeros.indexOf(0), 1)
     for (let i = 0; i < onesAndCeros.length - 1; i++) {
-      if (onesAndCeros[i] !== onesAndCeros[i+1]) {
+      if (onesAndCeros[i] !== onesAndCeros[i + 1]) {
         response = 'NO'
         break
       }
@@ -525,7 +525,7 @@ function isValid(s) {
   } else if ((onesAndCeros.indexOf(1) === onesAndCeros.lastIndexOf(1))) {
     onesAndCeros.splice(onesAndCeros.indexOf(1), 1)
     for (let i = 0; i < onesAndCeros.length - 1; i++) {
-      if (onesAndCeros[i] !== onesAndCeros[i+1]) {
+      if (onesAndCeros[i] !== onesAndCeros[i + 1]) {
         response = 'NO'
         break
       }
@@ -533,7 +533,7 @@ function isValid(s) {
   } else {
     response = 'NO'
   }
-  
+
   return response
 }
 
@@ -594,9 +594,9 @@ Each character in the number is an integer where .
 function highestValuePalindrome(s, n, k) {
   s = s.split('');
   let isPalindrome
-  
-  for (let i = 0; i < Math.trunc(n/2) ; i++) {
-    if ((s[i] !== s[s.length - 1 - i]) && k > 0 ) {
+
+  for (let i = 0; i < Math.trunc(n / 2); i++) {
+    if ((s[i] !== s[s.length - 1 - i]) && k > 0) {
       s[s.length - 1 - i] = s[i];
       k--
     }
@@ -607,7 +607,7 @@ function highestValuePalindrome(s, n, k) {
   } else {
     isPalindrome = -1
   }
-  
+
   return isPalindrome
 }
 
@@ -674,13 +674,13 @@ Each line of the subsequent lines contains a single integer, .
 
 function gradingStudents(grades) {
   return grades.map(element => {
-    if(element < 38) {
+    if (element < 38) {
       return element
     } else {
-      if (3 <= (element % 10) &&  (element % 10) <= 5){
-        return element + ( 5 - element%10)
-      } else if (8 <= (element % 10) && (element % 10) <= 10){
-        return element + (10 - element%10)
+      if (3 <= (element % 10) && (element % 10) <= 5) {
+        return element + (5 - element % 10)
+      } else if (8 <= (element % 10) && (element % 10) <= 10) {
+        return element + (10 - element % 10)
       } else {
         return element
       }
@@ -740,12 +740,12 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   let countApples = 0;
   let countOranges = 0;
 
-  for (let index = 0; index < length; index ++) {
-    if ((apples[index] + a) >= s && (apples[index] + a) <= t){
+  for (let index = 0; index < length; index++) {
+    if ((apples[index] + a) >= s && (apples[index] + a) <= t) {
       countApples++;
     }
 
-    if ((oranges[index] + b) >= s && (oranges[index] + b) <= t){
+    if ((oranges[index] + b) >= s && (oranges[index] + b) <= t) {
       countOranges++;
     }
   }
@@ -798,8 +798,8 @@ A single line of four space-separated integers denoting the respective values of
 */
 
 function kangaroo(x1, v1, x2, v2) {
-  let jumps = (x2-x1) /(v1-v2)
-  
+  let jumps = (x2 - x1) / (v1 - v2)
+
   if (Number.isInteger(jumps) && jumps >= 0) {
     return 'YES'
   } else {
@@ -853,11 +853,11 @@ function getTotalX(a, b) {
   let isFactor = (a, b) => a % b === 0;
 
   let results = []
-  
+
   for (let i = a[a.length - 1]; i <= b[0]; i++) {
-    if (a.every( x => isFactor(i, x)) && b.every( x => isFactor(x, i))) results.push(i)
+    if (a.every(x => isFactor(i, x)) && b.every(x => isFactor(x, i))) results.push(i)
   }
-  
+
   return results.length
 }
 
@@ -909,7 +909,7 @@ Constraints
 function breakingRecords(scores) {
   let records = [scores[0], scores[0]], breakBestRecord = 0, breakWrostRecord = 0;
 
-  for (let score of scores)  {
+  for (let score of scores) {
     if (score > records[0]) {
       records[0] = score
       breakBestRecord++
@@ -918,8 +918,8 @@ function breakingRecords(scores) {
       breakWrostRecord++
     }
   }
-  
-  return [breakBestRecord, breakWrostRecord]  
+
+  return [breakBestRecord, breakWrostRecord]
 }
 
 //log(breakingRecords([10, 5, 20, 20, 4, 5, 2, 25, 1])) // 2, 4
@@ -969,7 +969,7 @@ function birthday(s, d, m) {
   let counter = 0;
 
   for (let i = 0; i < s.length; i++) {
-    if (s.slice(i, (i + m)).reduce((total, value) => total + value, 0) === d) counter ++
+    if (s.slice(i, (i + m)).reduce((total, value) => total + value, 0) === d) counter++
   }
 
   return counter
@@ -988,11 +988,11 @@ k
 
 function divisibleSumPairs(n, k, ar) {
   let counter = 0;
-  
+
   for (let i = 0; i < n; i++) {
     for (let j = 1; j < n; j++) {
       if (i < j && (ar[i] + ar[j]) % k === 0) counter++
-    }    
+    }
   }
 
   return counter
@@ -1043,7 +1043,7 @@ For example, the given year = 1984. 1984 is divisible by 4, so it is a leap year
 
 function dayOfProgrammer(year) {
   let day = 0
-  
+
   if (year === 1918) {
     day = 256 - 230
   } else if (year >= 1700 && year <= 1917) {
@@ -1057,7 +1057,7 @@ function dayOfProgrammer(year) {
       day = 256 - 244
     } else {
       day = 256 - 243
-    }  
+    }
   }
 
   return `${day}.09.${year}`
@@ -1082,14 +1082,14 @@ bonAppetit has the following parameter(s):
 */
 
 function bonAppetit(bill, k, b) {
-  let annasBill = 0; 
+  let annasBill = 0;
   let response = ''
-  
+
   //bill.splice(k, 1)
   for (let i = 0; i < bill.length; i++) {
     annasBill += bill[i]
   }
-  
+
   annasBill = (annasBill - bill[k]) / 2
 
   //annasBill = bill.reduce((total, element) => total + element, 0) / 2;
@@ -1103,5 +1103,35 @@ function bonAppetit(bill, k, b) {
   return response
 }
 
-log(bonAppetit([3, 10, 2, 9], 1, 12)) // 5
-log(bonAppetit([3, 10, 2, 9], 1, 7)) // Bon Appetit
+//log(bonAppetit([3, 10, 2, 9], 1, 12)) // 5
+//log(bonAppetit([3, 10, 2, 9], 1, 7)) // Bon Appetit
+
+/*
+There is a large pile of socks that must be paired by color. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
+
+Function Description
+
+Complete the sockMerchant function in the editor below.
+
+sockMerchant has the following parameter(s):
+
+    int n: the number of socks in the pile
+    int ar[n]: the colors of each sock
+
+Returns
+
+    int: the number of pairs
+*/
+
+function sockMerchant(n, ar) {
+  let sockObject = {};
+
+  for (let element of ar) {
+    sockObject[element] === undefined ? sockObject[element] = 1 : sockObject[element]++;
+  }
+
+  return Object.values(sockObject).reduce((total, element) => total + Math.floor(element / 2), 0)
+}
+
+log(sockMerchant(7, [1, 2, 1, 2, 1, 3, 2])) // 2
+log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20])) // 3
