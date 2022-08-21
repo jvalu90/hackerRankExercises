@@ -1133,5 +1133,24 @@ function sockMerchant(n, ar) {
   return Object.values(sockObject).reduce((total, element) => total + Math.floor(element / 2), 0)
 }
 
-log(sockMerchant(7, [1, 2, 1, 2, 1, 3, 2])) // 2
-log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20])) // 3
+//log(sockMerchant(7, [1, 2, 1, 2, 1, 3, 2])) // 2
+//log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20])) // 3
+
+/*
+Drawing Book
+
+Complete the pageCount function in the editor below.
+
+pageCount has the following parameter(s):
+
+    int n: the number of pages in the book
+    int p: the page number to turn to
+
+*/
+
+function pageCount(n, p) {
+  return Math.min(Math.trunc(p/2), Math.trunc((n-p)/2))
+}
+
+log(pageCount(6, 2)) // 1
+log(pageCount(5, 4)) // 0
