@@ -1149,8 +1149,13 @@ pageCount has the following parameter(s):
 */
 
 function pageCount(n, p) {
-  return Math.min(Math.trunc(p/2), Math.trunc((n-p)/2))
+  if (n % 2 === 0 && p % 2 !== 0) {
+    return Math.min(Math.trunc(p/2), Math.trunc((n-p)/2)+1)
+  } else {
+    return Math.min(Math.trunc(p/2), Math.trunc((n-p)/2))
+  }
 }
 
 log(pageCount(6, 2)) // 1
 log(pageCount(5, 4)) // 0
+log(pageCount(10, 9)) // 1
