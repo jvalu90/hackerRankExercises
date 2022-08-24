@@ -1156,6 +1156,31 @@ function pageCount(n, p) {
   }
 }
 
-log(pageCount(6, 2)) // 1
-log(pageCount(5, 4)) // 0
-log(pageCount(10, 9)) // 1
+//log(pageCount(6, 2)) // 1
+//log(pageCount(5, 4)) // 0
+//log(pageCount(10, 9)) // 1
+
+/*
+Counting Valleys
+
+Complete the countingValleys function in the editor below.
+
+countingValleys has the following parameter(s):
+
+    int steps: the number of steps on the hike
+    string path: a string describing the path
+*/
+
+function countingValleys(steps, path) {
+  let altitude = 0
+  let valleyCounter = 0
+  
+  for(let step of path) {
+    step === 'U'? altitude++ : altitude--
+    if (altitude === 0 && step === 'U') valleyCounter++
+  }
+
+  return valleyCounter
+}
+
+log(countingValleys(8, 'UDDDUDUU')) // 1
