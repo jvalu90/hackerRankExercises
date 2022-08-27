@@ -1183,4 +1183,41 @@ function countingValleys(steps, path) {
   return valleyCounter
 }
 
-log(countingValleys(8, 'UDDDUDUU')) // 1
+//log(countingValleys(8, 'UDDDUDUU')) // 1
+
+/*
+Electronics Shop
+
+Function Description
+
+Complete the getMoneySpent function in the editor below.
+
+getMoneySpent has the following parameter(s):
+
+    int keyboards[n]: the keyboard prices
+    int drives[m]: the drive prices
+    int b: the budget
+
+Returns
+
+    int: the maximum that can be spent, or -1 if it is not possible to buy both items
+*/
+
+function getMoneySpent(keyboards, drives, b) {
+  let result = [];
+
+  for (let i = 0; i < keyboards.length; i++) {
+    for (let j = 0; j < drives.length; j++) {
+      if (keyboards[i] + drives[j] <= b) result.push(keyboards[i] + drives[j])
+    }
+  }
+
+  if (result.length === 0) {
+    return -1
+  } else {
+    return Math.max(...result)
+  }
+}
+
+log(getMoneySpent([3, 1], [5, 2, 8], 10)) // 9
+log(getMoneySpent([5], [4], 5)) // -1
