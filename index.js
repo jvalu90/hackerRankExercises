@@ -1219,5 +1219,34 @@ function getMoneySpent(keyboards, drives, b) {
   }
 }
 
-log(getMoneySpent([3, 1], [5, 2, 8], 10)) // 9
-log(getMoneySpent([5], [4], 5)) // -1
+//log(getMoneySpent([3, 1], [5, 2, 8], 10)) // 9
+//log(getMoneySpent([5], [4], 5)) // -1
+
+/*
+Cats and a Mouse
+
+Complete the catAndMouse function in the editor below.
+
+catAndMouse has the following parameter(s):
+
+    int x: Cat A's position
+    int y: Cat B's position
+    int z: Mouse c's position 
+*/
+
+function catAndMouse(x, y, z) {
+  let distanceXZ = Math.abs(z -x), distanceYZ = Math.abs(z - y);
+
+  if (distanceXZ < distanceYZ) {
+    return "Cat A"
+  } else if (distanceXZ > distanceYZ) {
+    return "Cat B"
+  } else {
+    return "Mouse C"
+  }
+}
+
+log(catAndMouse(2, 5, 4)) // Cat B
+log(catAndMouse(1, 2, 3)) // Cat B
+log(catAndMouse(1, 3, 2)) // Mouse C
+
