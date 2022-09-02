@@ -1246,7 +1246,52 @@ function catAndMouse(x, y, z) {
   }
 }
 
-log(catAndMouse(2, 5, 4)) // Cat B
-log(catAndMouse(1, 2, 3)) // Cat B
-log(catAndMouse(1, 3, 2)) // Mouse C
+//log(catAndMouse(2, 5, 4)) // Cat B
+//log(catAndMouse(1, 2, 3)) // Cat B
+//log(catAndMouse(1, 3, 2)) // Mouse C
+
+/*
+Forming a Magic Square
+
+Complete the formingMagicSquare function in the editor below.
+
+formingMagicSquare has the following parameter(s):
+
+    int s[3][3]: a 3x3
+
+array of integers 
+*/
+
+function formingMagicSquare(s) {
+  
+  const possibleMagicSquares = [[2, 9, 4, 7, 5, 3, 6, 1, 8],
+    [2, 7, 6, 9, 5, 1, 4, 3, 8],
+    [4, 3, 8, 9, 5, 1, 2, 7, 6],
+    [4, 9, 2, 3, 5, 7, 8, 1, 6],
+    [8, 1, 6, 3, 5, 7, 4, 9, 2],
+    [8, 3, 4, 1, 5, 9, 6, 7, 2],
+    [6, 7, 2, 1, 5, 9, 8, 3, 4],
+    [6, 1, 8, 7, 5, 3, 2, 9, 4]] 
+
+  const s_flat = s.flat();
+
+  log(s_flat)
+  
+    let totalDifferent = [];
+    for(let i = 0; i < possibleMagicSquares.length; i ++) {
+        let total = 0;
+      
+        s_flat.reduce((previous, current, index) => {
+            total = previous + Math.abs(current - possibleMagicSquares[i][index]);
+            return total
+        }, 0)
+      
+        totalDifferent.push(total);
+    }
+  
+    return Math.min(...totalDifferent);
+}
+
+log(formingMagicSquare([[4, 9, 2], [3, 5, 7], [8, 1, 5]])) // 1
+log(formingMagicSquare([[4, 8, 2], [4, 5, 7], [6, 1, 6]])) // 4
 
