@@ -1292,6 +1292,85 @@ function formingMagicSquare(s) {
     return Math.min(...totalDifferent);
 }
 
-log(formingMagicSquare([[4, 9, 2], [3, 5, 7], [8, 1, 5]])) // 1
-log(formingMagicSquare([[4, 8, 2], [4, 5, 7], [6, 1, 6]])) // 4
+//log(formingMagicSquare([[4, 9, 2], [3, 5, 7], [8, 1, 5]])) // 1
+//log(formingMagicSquare([[4, 8, 2], [4, 5, 7], [6, 1, 6]])) // 4
+
+/*
+Picking Numbers
+
+Function Description
+
+Complete the pickingNumbers function in the editor below.
+
+pickingNumbers has the following parameter(s):
+
+    int a[n]: an array of integers
+
+Returns
+
+    int: the length of the longest subarray that meets the criterion
+*/
+
+function pickingNumbers(a) {
+  let maxCount = -Infinity;
+  
+  for (let i = 0; i < a.length; i++) {
+    let counter = 1;
+    for (let j = 0; j < a.length; j++) {
+      if (i !== j) {
+        if (a[i] === a[j] || a[i] === a[j] - 1) {
+          counter++;
+        }
+      }
+    }
+    
+    maxCount = Math.max(counter, maxCount)
+  }
+
+  return maxCount;
+}
+
+//log(pickingNumbers([4, 6, 5, 3, 3, 1])) // 3
+//log(pickingNumbers([1, 2, 2, 3, 1, 2,])) // 5
+
+/*
+Climbing the Leaderboard
+
+Complete the climbingLeaderboard function in the editor below.
+
+climbingLeaderboard has the following parameter(s):
+
+    int ranked[n]: the leaderboard scores
+    int player[m]: the player's scores
+*/
+
+function climbingLeaderboard(ranked, player) {
+  let positions = [1];
+  
+  for (let i = 1; i < ranked.length; i++) {
+    if (ranked[i] === ranked[i-1]) {
+      positions.push(positions[i-1])
+    } else {
+      positions.push(positions[i-1] + 1)
+    }    
+  }
+
+  let results = [positions[positions.length-1] + 1];
+  
+  for ( let j = 0 ; j < player.length ; j++ ){    
+    for ( let k = 0; k < ranked.length; k++){        
+        if (player[j] > ranked[k]){            
+          results[j] = positions[k]
+          k = ranked.length + 1    
+        } else if (player[j] == ranked[k]) {     
+            results[j] = positions[k] 
+            k = ranked.length + 1
+        }   
+    }
+  }
+  return results
+}
+
+log(climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120])) // [6, 4, 2, 1]
+log(climbingLeaderboard([100, 90, 90, 80, 75, 60], [50, 65, 77, 90, 102])) // [6, 5, 4, 2, 1]
 
