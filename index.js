@@ -1392,5 +1392,29 @@ function hurdleRace(k, height) {
   else return maxHeight - k;
 }
 
-log(hurdleRace(4, [1, 6, 3, 5, 2])) // 2
-log(hurdleRace(7, [2, 5, 4, 5, 2])) // 0
+//log(hurdleRace(4, [1, 6, 3, 5, 2])) // 2
+//log(hurdleRace(7, [2, 5, 4, 5, 2])) // 0
+
+/*
+Designer PDF Viewer
+
+Complete the designerPdfViewer function in the editor below.
+
+designerPdfViewer has the following parameter(s):
+
+    int h[26]: the heights of each letter
+    string word: a string
+*/
+
+function designerPdfViewer(h, word) {
+  let wordHeightArray =[];
+
+  for (let i = 0; i < word.length; i++) {
+    wordHeightArray.push(h[word.charCodeAt(i) - 97])
+  }
+
+  return Math.max(...wordHeightArray) * word.length;
+}
+
+log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "abc")) // 9
+log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7], "zaba")) // 28
