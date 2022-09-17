@@ -1416,5 +1416,30 @@ function designerPdfViewer(h, word) {
   return Math.max(...wordHeightArray) * word.length;
 }
 
-log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "abc")) // 9
-log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7], "zaba")) // 28
+//log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], "abc")) // 9
+//log(designerPdfViewer([1, 3, 1, 3, 1, 4, 1, 3, 2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7], "zaba")) // 28
+
+/*
+Utopian Tree
+
+Complete the utopianTree function in the editor below.
+
+utopianTree has the following parameter(s):
+
+    int n: the number of growth cycles to simulate
+*/
+
+function utopianTree(n) {
+  let height = 0
+
+  for (let i = 0; i <= n; i++) {
+    if(i % 2 === 0) height += 1
+    else height *= 2
+  }
+
+  return height
+}
+
+log(utopianTree(0)) // 1
+log(utopianTree(1)) // 2
+log(utopianTree(4)) // 7
