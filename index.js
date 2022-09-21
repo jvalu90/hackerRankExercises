@@ -1440,6 +1440,32 @@ function utopianTree(n) {
   return height
 }
 
-log(utopianTree(0)) // 1
-log(utopianTree(1)) // 2
-log(utopianTree(4)) // 7
+//log(utopianTree(0)) // 1
+//log(utopianTree(1)) // 2
+//log(utopianTree(4)) // 7
+
+/*
+Angry Professor
+
+Complete the angryProfessor function in the editor below. It must return YES if class is cancelled, or NO otherwise.
+
+angryProfessor has the following parameter(s):
+
+    int k: the threshold number of students
+    int a[n]: the arrival times of the n students
+*/
+
+function angryProfessor(k, a) {
+  let onTime = 0
+
+  for(let element of a) {
+    if(element <= 0) onTime++
+  }
+
+  if(onTime >= k) return "NO"
+
+  return "YES"
+}
+
+log(angryProfessor(3, [-1, -3, 4, 2])) //YES
+log(angryProfessor(2, [0, -1, 2, 1])) //NO
