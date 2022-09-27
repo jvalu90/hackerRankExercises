@@ -1467,5 +1467,29 @@ function angryProfessor(k, a) {
   return "YES"
 }
 
-log(angryProfessor(3, [-1, -3, 4, 2])) //YES
-log(angryProfessor(2, [0, -1, 2, 1])) //NO
+//log(angryProfessor(3, [-1, -3, 4, 2])) //YES
+//log(angryProfessor(2, [0, -1, 2, 1])) //NO
+
+/*
+Beautiful Days at the Movies
+
+Complete the beautifulDays function in the editor below.
+
+beautifulDays has the following parameter(s):
+
+    int i: the starting day number
+    int j: the ending day number
+    int k: the divisor
+*/
+
+function beautifulDays(i, j, k) {
+  let beautifuldays = 0;
+  
+  for(let number = i; number <= j; number++) {
+    if(Math.abs(number.toString() - number.toString().split('').reverse().join('')) % k === 0) beautifuldays++
+  }
+
+  return beautifuldays;
+}
+
+log(beautifulDays(20, 23, 6)) //2
