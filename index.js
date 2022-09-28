@@ -1492,4 +1492,37 @@ function beautifulDays(i, j, k) {
   return beautifuldays;
 }
 
-log(beautifulDays(20, 23, 6)) //2
+//log(beautifulDays(20, 23, 6)) //2
+
+/*
+Viral Advertising
+
+Function Description
+
+Complete the viralAdvertising function in the editor below.
+
+viralAdvertising has the following parameter(s):
+
+    int n: the day number to report
+
+Returns
+
+    int: the cumulative likes at that day
+
+*/
+
+function viralAdvertising(n) {
+  return totalLikes(n, 5, 0);    
+
+  function totalLikes(day, people, likes) {
+    if (day === 0) {
+      return likes;   
+    } else {
+      let newLikes = Math.floor(people / 2);
+      return totalLikes(day - 1, newLikes * 3, likes + newLikes);  
+    }
+  }
+}
+
+log(viralAdvertising(5)) // 24
+log(viralAdvertising(3)) // 9
