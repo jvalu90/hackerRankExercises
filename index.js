@@ -1524,5 +1524,20 @@ function viralAdvertising(n) {
   }
 }
 
-log(viralAdvertising(5)) // 24
-log(viralAdvertising(3)) // 9
+//log(viralAdvertising(5)) // 24
+//log(viralAdvertising(3)) // 9
+
+// Ejemplo recursion para crear un arreglo
+function rangeOfNumbers(startNum, endNum) {
+  if(endNum - startNum < 0) {
+    return [];
+  } else {
+    const array = rangeOfNumbers(startNum + 1, endNum)
+    array.unshift(startNum)
+    return array;
+  }
+};
+
+log(rangeOfNumbers(1, 5)) //[1, 2, 3, 4, 5]
+log(rangeOfNumbers(6, 9)) //[6, 7, 8, 9]
+log(rangeOfNumbers(4, 4)) //[4]
