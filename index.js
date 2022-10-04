@@ -1538,6 +1538,38 @@ function rangeOfNumbers(startNum, endNum) {
   }
 };
 
-log(rangeOfNumbers(1, 5)) //[1, 2, 3, 4, 5]
-log(rangeOfNumbers(6, 9)) //[6, 7, 8, 9]
-log(rangeOfNumbers(4, 4)) //[4]
+//log(rangeOfNumbers(1, 5)) //[1, 2, 3, 4, 5]
+//log(rangeOfNumbers(6, 9)) //[6, 7, 8, 9]
+//log(rangeOfNumbers(4, 4)) //[4]
+
+/*
+Save the Prisoner!
+
+Function Description
+
+Complete the saveThePrisoner function in the editor below. It should return an integer representing the chair number of the prisoner to warn.
+
+saveThePrisoner has the following parameter(s):
+
+    int n: the number of prisoners
+    int m: the number of sweets
+    int s: the chair number to begin passing out sweets from
+*/
+
+function saveThePrisoner(n, m, s) {
+  let candies = m;
+  let prisonerSeat = s - 1;
+  while(candies > 0) {
+    prisonerSeat++;
+    candies--;
+  }
+  
+  if (m <= n ) return prisonerSeat
+
+  return prisonerSeat - Math.floor(m / n) * n
+}
+
+log(saveThePrisoner(5, 2, 1)) // 2
+log(saveThePrisoner(5, 2, 2)) // 3
+log(saveThePrisoner(7, 19, 2)) // 6
+log(saveThePrisoner(3, 7, 3)) // 3
