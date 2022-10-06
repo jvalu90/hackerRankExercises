@@ -1569,7 +1569,30 @@ function saveThePrisoner(n, m, s) {
   return prisonerSeat - Math.floor(m / n) * n
 }
 
-log(saveThePrisoner(5, 2, 1)) // 2
-log(saveThePrisoner(5, 2, 2)) // 3
-log(saveThePrisoner(7, 19, 2)) // 6
-log(saveThePrisoner(3, 7, 3)) // 3
+//log(saveThePrisoner(5, 2, 1)) // 2
+//log(saveThePrisoner(5, 2, 2)) // 3
+//log(saveThePrisoner(7, 19, 2)) // 6
+//log(saveThePrisoner(3, 7, 3)) // 3
+
+/*
+Circular Array Rotation
+
+Complete the circularArrayRotation function in the editor below.
+
+circularArrayRotation has the following parameter(s):
+
+    int a[n]: the array to rotate
+    int k: the rotation count
+    int queries[1]: the indices to report
+*/
+
+function circularArrayRotation(a, k, queries) {
+  for(let i = 0; i < k; i++) {
+    let element = a.pop();
+    a.unshift(element);
+  }
+
+  return a
+}
+
+log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2])) // 2 3 1
