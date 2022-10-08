@@ -1595,4 +1595,29 @@ function circularArrayRotation(a, k, queries) {
   return a
 }
 
-log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2])) // 2 3 1
+//log(circularArrayRotation([1, 2, 3], 2, [0, 1, 2])) // 2 3 1
+
+/*
+Sequence Equation
+
+Complete the permutationEquation function in the editor below.
+
+permutationEquation has the following parameter(s):
+
+    int p[n]: an array of integers
+*/
+
+function permutationEquation(p) {
+  let response = [];
+
+  for (let i = 1; i <= p.length; i++) {
+    for (let j = 1; j <= p.length; j++) {
+      if(p[p[j-1] - 1] === i) response.push(j)
+    }
+  }
+
+  return response
+}
+
+log(permutationEquation([2, 3, 1])) // [2, 3, 1]
+log(permutationEquation([4, 3, 5, 1, 2])) // [1, 3, 5, 4, 2]
