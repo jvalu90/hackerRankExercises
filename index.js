@@ -1619,5 +1619,33 @@ function permutationEquation(p) {
   return response
 }
 
-log(permutationEquation([2, 3, 1])) // [2, 3, 1]
-log(permutationEquation([4, 3, 5, 1, 2])) // [1, 3, 5, 4, 2]
+//log(permutationEquation([2, 3, 1])) // [2, 3, 1]
+//log(permutationEquation([4, 3, 5, 1, 2])) // [1, 3, 5, 4, 2]
+
+/*
+Jumping on the Clouds: Revisited
+
+Complete the jumpingOnClouds function in the editor below.
+
+jumpingOnClouds has the following parameter(s):
+
+    int c[n]: the cloud types along the path
+    int k: the length of one jump
+
+Returns
+
+    int: the energy level remaining.
+
+*/
+
+function jumpingOnClouds(c, k) {
+  let energyLevel = 100;
+    for (let i = 0; i < c.length; i += k) {
+        energyLevel -= c[i] == 0 ? 1 : 3;
+        if (i + k > c.length) i -= c.length;
+    }
+    return energyLevel;
+}
+
+log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 1, 0], 2)) //92
+log(jumpingOnClouds([1, 1, 1, 0, 1, 1, 0, 0, 0, 0,], 3)) //80
