@@ -1647,5 +1647,35 @@ function jumpingOnClouds(c, k) {
     return energyLevel;
 }
 
-log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 1, 0], 2)) //92
-log(jumpingOnClouds([1, 1, 1, 0, 1, 1, 0, 0, 0, 0,], 3)) //80
+//log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 1, 0], 2)) //92
+//log(jumpingOnClouds([1, 1, 1, 0, 1, 1, 0, 0, 0, 0,], 3)) //80
+
+/*
+Find Digits
+
+Returns
+
+    int: the number of digits in 
+
+that are divisors of
+
+Input Format
+
+The first line is an integer,
+, the number of test cases.
+The subsequent lines each contain an integer, . 
+*/
+
+function findDigits(n) {
+  let stringN = n.toString().split('')
+  let counter = 0;
+
+  for(let i = 0; i < stringN.length; i++){
+    if(n % stringN[i] === 0) counter++
+  }
+  
+  return counter
+}
+
+log(findDigits(12)) // 2
+log(findDigits(1012)) // 3
