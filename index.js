@@ -1677,5 +1677,44 @@ function findDigits(n) {
   return counter
 }
 
-log(findDigits(12)) // 2
-log(findDigits(1012)) // 3
+//log(findDigits(12)) // 2
+//log(findDigits(1012)) // 3
+
+/*
+Extra Long Factorials
+
+Complete the extraLongFactorials function in the editor below. It should print the result and return.
+
+extraLongFactorials has the following parameter(s):
+
+    n: an integer
+*/
+
+function extraLongFactorials(n) {
+  if(n <= 0){
+    return 1
+  } else {
+    return n * extraLongFactorials(n-1)
+  }
+}
+
+// Bigint Solution
+function extraLongFactorialsNF(n) {
+    let factorial = 1;
+    if (n < 20) {
+        for (let index = 1; index <= n; index++) {
+
+            factorial = factorial * index;
+        }
+        console.log(factorial);
+    }
+    else {
+        let bigFactorial = BigInt(1);
+        for (let i = 1; i <= n; i++) {
+            bigFactorial = bigFactorial * BigInt(i);
+        }
+        console.log(bigFactorial.toString());
+    }
+}
+
+log(extraLongFactorials(25)) // 1.5511210043330986e+25
