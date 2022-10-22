@@ -1717,4 +1717,35 @@ function extraLongFactorialsNF(n) {
     }
 }
 
-log(extraLongFactorials(25)) // 1.5511210043330986e+25
+//log(extraLongFactorials(25)) // 1.5511210043330986e+25
+
+/*
+Append and Delete
+
+Complete the appendAndDelete function in the editor below. It should return a string, either Yes or No.
+
+appendAndDelete has the following parameter(s):
+
+    string s: the initial string
+    string t: the desired string
+    int k: the exact number of operations that must be performed
+*/
+
+function appendAndDelete(s, t, k) {
+    // s string t target output k moves
+    let startOnIndex = s.length;
+    let moves = 0;
+    for(let i=0;i<s.length;i++){
+        if(s[i]!== t[i]){
+            startOnIndex = i;
+            break;
+        }
+    }
+
+    let remaining = t.length - startOnIndex;
+    moves = (s.length- startOnIndex + remaining);
+    return moves <= k && remaining%2===0? "Yes": "No";
+}
+
+log(appendAndDelete("aba", "aba", 7)) //Yes
+log(appendAndDelete("ashley", "ash", 2)) //No
