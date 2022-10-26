@@ -1747,5 +1747,30 @@ function appendAndDelete(s, t, k) {
     return moves <= k && remaining%2===0? "Yes": "No";
 }
 
-log(appendAndDelete("aba", "aba", 7)) //Yes
-log(appendAndDelete("ashley", "ash", 2)) //No
+//log(appendAndDelete("aba", "aba", 7)) //Yes
+//log(appendAndDelete("ashley", "ash", 2)) //No
+
+/*
+Sherlock and Squares
+
+Complete the squares function in the editor below. It should return an integer representing the number of square integers in the inclusive range from to
+
+.
+
+squares has the following parameter(s):
+
+    int a: the lower range boundary
+    int b: the upper range boundary
+*/
+
+function squares(a, b) {
+  let result = 0
+  for(let i = a; i <= b; i++){
+    if(Math.pow(i, 0.5) % 1 === 0) result ++
+  }
+
+  return result
+}
+
+log(squares(3, 9)) // 2 
+log(squares(17, 24)) // 0
