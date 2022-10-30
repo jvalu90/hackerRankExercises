@@ -1772,5 +1772,34 @@ function squares(a, b) {
   return result
 }
 
-log(squares(3, 9)) // 2 
-log(squares(17, 24)) // 0
+//log(squares(3, 9)) // 2 
+//log(squares(17, 24)) // 0
+
+/*
+Library Fine
+
+Function Description
+
+Complete the libraryFine function in the editor below.
+
+libraryFine has the following parameter(s):
+
+    d1, m1, y1: returned date day, month and year, each an integer
+    d2, m2, y2: due date day, month and year, each an integer
+
+Returns
+
+    int: the amount of the fine or 0 if there is none
+*/
+
+function libraryFine(d1, m1, y1, d2, m2, y2) {
+  if (y1>y2)
+    return 10000;    
+  if (y1==y2 && m1==m2 && d1>d2)
+    return (d1-d2)*15;  
+  if (y1==y2 && m1>m2) 
+    return (m1-m2)*500;    
+  return 0;
+}
+
+log(libraryFine(9, 6, 2015, 6, 6, 2015)) //45
