@@ -1802,4 +1802,33 @@ function libraryFine(d1, m1, y1, d2, m2, y2) {
   return 0;
 }
 
-log(libraryFine(9, 6, 2015, 6, 6, 2015)) //45
+//log(libraryFine(9, 6, 2015, 6, 6, 2015)) //45
+
+/*
+Function Description
+
+Complete the cutTheSticks function in the editor below. It should return an array of integers representing the number of sticks before each cut operation is performed.
+
+cutTheSticks has the following parameter(s):
+
+    int arr[n]: the lengths of each stick
+
+Returns
+
+    int[]: the number of sticks after each iteration
+*/
+
+function cutTheSticks(arr) {
+  let result = [];
+
+  while (arr.length > 0) {
+    result.push(arr.length);
+    let min = Math.min(...arr);
+    arr = arr.map((item) => item - min).filter((item) => item > 0);
+  }
+
+  return result;
+}
+
+log(cutTheSticks([5, 4, 4, 2, 2, 8])) // [6, 4, 2, 1]
+log(cutTheSticks([1, 2, 3, 4, 3, 3, 2, 1])) // [8, 6, 4, 1]
