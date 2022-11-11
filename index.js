@@ -1830,5 +1830,43 @@ function cutTheSticks(arr) {
   return result;
 }
 
-log(cutTheSticks([5, 4, 4, 2, 2, 8])) // [6, 4, 2, 1]
-log(cutTheSticks([1, 2, 3, 4, 3, 3, 2, 1])) // [8, 6, 4, 1]
+//log(cutTheSticks([5, 4, 4, 2, 2, 8])) // [6, 4, 2, 1]
+//log(cutTheSticks([1, 2, 3, 4, 3, 3, 2, 1])) // [8, 6, 4, 1]
+
+/*
+Non-Divisible Subset
+
+Function Description
+
+Complete the nonDivisibleSubset function in the editor below.
+
+nonDivisibleSubset has the following parameter(s):
+
+    int S[n]: an array of integers
+    int k: the divisor
+
+Returns
+
+    int: the length of the longest subset of S meeting the criteria 
+*/
+
+function nonDivisibleSubset(k, s) {
+    let remainders = new Array(k).fill(0);
+  
+    s.forEach(num => remainders[num % k]++);
+    let result = 0;
+  
+    if (remainders[0] !== 0) {
+        result += 1;
+    }
+    if (k % 2 == 0 && remainders[k / 2] !== 0) {
+        result += 1;
+    }
+    for (let i = 1; i < k / 2; i++) {
+        result += Math.max(remainders[i], remainders[k - i]);
+    }
+    return result;
+}
+
+log(nonDivisibleSubset(3, [1, 7, 2, 4])) // 3
+log(nonDivisibleSubset(7, [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436])) // 11
