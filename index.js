@@ -1868,5 +1868,36 @@ function nonDivisibleSubset(k, s) {
     return result;
 }
 
-log(nonDivisibleSubset(3, [1, 7, 2, 4])) // 3
-log(nonDivisibleSubset(7, [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436])) // 11
+//log(nonDivisibleSubset(3, [1, 7, 2, 4])) // 3
+//log(nonDivisibleSubset(7, [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436])) // 11
+
+/*
+Repeated String
+
+Complete the repeatedString function in the editor below.
+
+repeatedString has the following parameter(s):
+
+    s: a string to repeat
+    n: the number of characters to consider
+*/
+
+function repeatedString(s, n) {
+  let counterRemain = 0;
+  let counter = 0;
+  let repeated = Math.floor(n / s.length);
+  let remainString = s.slice(0, n - repeated * s.length);
+
+  for(let i = 0; i < remainString.length; i++) {
+    if(remainString[i] === "a") counterRemain++
+  }
+
+  for(let i = 0; i < s.length; i++) {
+    if(s[i] === "a") counter++
+  }
+
+  return counter * repeated + counterRemain
+}
+
+log(repeatedString("aba", 10)) // 7
+log(repeatedString("a", 1000000000000)) // 1000000000000
