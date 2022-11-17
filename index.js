@@ -1899,5 +1899,33 @@ function repeatedString(s, n) {
   return counter * repeated + counterRemain
 }
 
-log(repeatedString("aba", 10)) // 7
-log(repeatedString("a", 1000000000000)) // 1000000000000
+//log(repeatedString("aba", 10)) // 7
+//log(repeatedString("a", 1000000000000)) // 1000000000000
+
+/*
+Complete the jumpingOnClouds function in the editor below.
+
+jumpingOnClouds has the following parameter(s):
+
+    int c[n]: an array of binary integers
+*/
+
+function jumpingOnClouds(c) {
+  let index = 0;
+  let lastJump = c.length - 1; // This is an adjust to avoid last iteration of while
+  let jumps = 0;
+  
+  while(index < lastJump) {
+    
+    if(c[index + 2] === 0) {
+      index += 2;
+    } else {
+      index += 1;
+    }
+    jumps += 1;
+  }
+  return jumps;
+}
+
+log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])) // 4
+log(jumpingOnClouds([0, 0, 0, 0, 1, 0])) // 3
