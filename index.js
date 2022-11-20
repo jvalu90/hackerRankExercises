@@ -1927,5 +1927,30 @@ function jumpingOnClouds(c) {
   return jumps;
 }
 
-log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])) // 4
-log(jumpingOnClouds([0, 0, 0, 0, 1, 0])) // 3
+//log(jumpingOnClouds([0, 0, 1, 0, 0, 1, 0])) // 4
+//log(jumpingOnClouds([0, 0, 0, 0, 1, 0])) // 3
+
+/*
+Equalize the Array
+
+Complete the equalizeArray function in the editor below.
+
+equalizeArray has the following parameter(s):
+
+    int arr[n]: an array of integers
+*/
+
+function equalizeArray(arr) {
+  let mapCounter = {};
+
+  for(let element of arr){
+    mapCounter[element] === undefined ? mapCounter[element] = 1 : mapCounter[element]++;
+  }
+
+  let repeatedCount = Object.values(mapCounter);
+
+  return repeatedCount.reduce((acc, current) => acc + current, 0) - Math.max(...repeatedCount)
+}
+
+log(equalizeArray([3, 3, 2, 1, 3])) //2
+log(equalizeArray([1, 2, 2, 3])) //2
