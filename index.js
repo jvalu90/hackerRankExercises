@@ -2008,6 +2008,40 @@ function queensAttack(n, k, r_q, c_q, obstacles) {
   return minDist.reduce((a, b) => a + b);
 }
 
-log(queensAttack(4, 0, 4, 4, [])) // 9
-log(queensAttack(5, 3, 4, 3, [[5, 5], [4, 2], [2, 3]])) // 10
-log(queensAttack(1, 0, 1, 1, [])) // 0
+//log(queensAttack(4, 0, 4, 4, [])) // 9
+//log(queensAttack(5, 3, 4, 3, [[5, 5], [4, 2], [2, 3]])) // 10
+//log(queensAttack(1, 0, 1, 1, [])) // 0
+
+/*
+ACM ICPC Team
+
+Function Description
+
+Complete the acmTeam function in the editor below.
+acmTeam has the following parameter(s):
+
+    string topic: a string of binary digits
+
+Returns
+
+    int[2]: the maximum topics and the number of teams that know that many topics
+*/
+
+function acmTeam(topic) {
+  
+  let object = {}
+  for (let i = 0; i < topic.length - 1; i++) {
+    let ones = 0
+    for (let j = i + 1; j < topic.length; j++) {
+      ones = (parseInt(topic[i], 2) | parseInt(topic[j], 2)).toString(2).split('').filter(x => x == 1).length
+      object[ones] === undefined ? object[ones] = 1 : object[ones] += 1
+    }
+  }
+
+  let max = Math.max(...Object.keys(object))
+
+  return [max, object[max]]
+}
+
+log(acmTeam(["10101", "11110", "00010"])) // [5, 1]
+log(acmTeam(["10101", "11100", "11010", "00101"])) // [5, 2]
