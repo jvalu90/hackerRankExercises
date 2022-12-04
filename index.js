@@ -2043,5 +2043,29 @@ function acmTeam(topic) {
   return [max, object[max]]
 }
 
-log(acmTeam(["10101", "11110", "00010"])) // [5, 1]
-log(acmTeam(["10101", "11100", "11010", "00101"])) // [5, 2]
+//log(acmTeam(["10101", "11110", "00010"])) // [5, 1]
+//log(acmTeam(["10101", "11100", "11010", "00101"])) // [5, 2]
+
+/*
+Taum and B'day
+
+Complete the function taumBday in the editor below. It should return the minimal cost of obtaining the desired gifts.
+
+taumBday has the following parameter(s):
+
+    int b: the number of black gifts
+    int w: the number of white gifts
+    int bc: the cost of a black gift
+    int wc: the cost of a white gift
+    int z: the cost to convert one color gift to the other color
+*/
+
+function taumBday(b, w, bc, wc, z) {
+  return b * Math.min(bc, wc + z) + w * Math.min(wc, bc + z)
+}
+
+log(taumBday(10, 10, 1, 1, 1)) // 20
+log(taumBday(5, 9, 2, 3, 4)) // 37
+log(taumBday(3, 6, 9, 1, 1)) // 12
+log(taumBday(7, 7, 4, 2, 1)) // 35
+log(taumBday(3, 3, 1, 9, 2)) // 12
