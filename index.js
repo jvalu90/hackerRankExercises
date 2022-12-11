@@ -2064,8 +2064,41 @@ function taumBday(b, w, bc, wc, z) {
   return b * Math.min(bc, wc + z) + w * Math.min(wc, bc + z)
 }
 
-log(taumBday(10, 10, 1, 1, 1)) // 20
-log(taumBday(5, 9, 2, 3, 4)) // 37
-log(taumBday(3, 6, 9, 1, 1)) // 12
-log(taumBday(7, 7, 4, 2, 1)) // 35
-log(taumBday(3, 3, 1, 9, 2)) // 12
+//log(taumBday(10, 10, 1, 1, 1)) // 20
+//log(taumBday(5, 9, 2, 3, 4)) // 37
+//log(taumBday(3, 6, 9, 1, 1)) // 12
+//log(taumBday(7, 7, 4, 2, 1)) // 35
+//log(taumBday(3, 3, 1, 9, 2)) // 12
+
+/*
+Organizing Containers of Balls
+
+Function Description
+Complete the organizingContainers function in the editor below.
+organizingContainers has the following parameter(s):
+int containter[n][m]: a two dimensional array of integers that represent the number of balls of each color in each container
+Returns
+string: either Possible or Impossible
+*/
+
+function organizingContainers(container) {
+  let balls = {}
+  let containersSize = {}
+
+  for (let i = 0; i < container.length; i++){
+    for (let j = 0; j < container[i].length; j++){
+      balls[j] === undefined ? balls[j] = container[i][j] : balls[j] += container[i][j];
+      containersSize[i] === undefined ? containersSize[i] = container[i][j] : containersSize[i] += container[i][j];
+    }
+  }
+
+  return Object.values(containersSize).sort((a, b) => a -b).reduce((pv, cv, i) => {
+        return Object.values(balls).sort((a, b) => a -b)[i] <= cv && pv
+    }, true) ? 'Possible' : 'Impossible'
+
+}
+
+log(organizingContainers([[1,1], [1,1]])) //Possible
+log(organizingContainers([[0,2], [1,1]])) //Impossible
+log(organizingContainers([[1,3,1], [2,1,2], [3,3,3]])) //Impossible
+log(organizingContainers([[0,2,1], [1,1,1], [2,0,0]])) //Possible
