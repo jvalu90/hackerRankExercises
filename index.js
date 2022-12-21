@@ -2098,7 +2098,31 @@ function organizingContainers(container) {
 
 }
 
-log(organizingContainers([[1,1], [1,1]])) //Possible
-log(organizingContainers([[0,2], [1,1]])) //Impossible
-log(organizingContainers([[1,3,1], [2,1,2], [3,3,3]])) //Impossible
-log(organizingContainers([[0,2,1], [1,1,1], [2,0,0]])) //Possible
+//log(organizingContainers([[1,1], [1,1]])) //Possible
+//log(organizingContainers([[0,2], [1,1]])) //Impossible
+//log(organizingContainers([[1,3,1], [2,1,2], [3,3,3]])) //Impossible
+//log(organizingContainers([[0,2,1], [1,1,1], [2,0,0]])) //Possible
+
+/*
+Encryption
+
+Function Description
+
+Complete the encryption function in the editor below.
+
+encryption has the following parameter(s):
+
+    string s: a string to encrypt
+
+Returns
+
+    string: the encrypted string
+*/
+
+function encryption(s) {
+  
+}
+
+log(encryption("haveaniceday")) //hae and via ecy
+log(encryption("feedthedog    ")) //fto ehg ee dd
+log(encryption("chillout")) //clu hlt io
