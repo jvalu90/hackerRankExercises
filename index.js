@@ -2120,7 +2120,29 @@ Returns
 */
 
 function encryption(s) {
+  s = s.replaceAll(" ", "").split("");
+  let rows = Math.floor(Math.sqrt(s.length));
+  let columns = Math.ceil(Math.sqrt(s.length));
+
+  if (rows * columns < s.length) rows = columns;
+
+  let sMatrix = []
+  let response = ""
   
+  for (let i = 0; i < rows; i++){
+    sMatrix.push(s.splice(0, columns))
+  }
+
+  for (let j = 0; j < columns; j++) {
+    for (let i = 0; i < rows; i++) {
+      if(sMatrix[i][j] === undefined) continue
+      response += sMatrix[i][j]
+    }
+
+      response += " "
+  }
+
+  return response.trim();
 }
 
 log(encryption("haveaniceday")) //hae and via ecy
