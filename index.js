@@ -2148,3 +2148,25 @@ function encryption(s) {
 log(encryption("haveaniceday")) //hae and via ecy
 log(encryption("feedthedog    ")) //fto ehg ee dd
 log(encryption("chillout")) //clu hlt io
+
+/*
+Bigger is Greater
+
+Function Description
+
+Complete the biggerIsGreater function in the editor below.
+
+biggerIsGreater has the following parameter(s):
+
+    string w: a word
+*/
+
+function biggerIsGreater(w) {
+  // Write your code here
+}
+
+log(biggerIsGreater("ab")) //ba
+log(biggerIsGreater("bb")) //no answer
+log(biggerIsGreater("hefg")) //hegf
+log(biggerIsGreater("dhck")) //dhkc
+log(biggerIsGreater("dkhc")) //hcdk
