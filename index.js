@@ -2145,9 +2145,9 @@ function encryption(s) {
   return response.trim();
 }
 
-log(encryption("haveaniceday")) //hae and via ecy
-log(encryption("feedthedog    ")) //fto ehg ee dd
-log(encryption("chillout")) //clu hlt io
+//log(encryption("haveaniceday")) //hae and via ecy
+//log(encryption("feedthedog    ")) //fto ehg ee dd
+//log(encryption("chillout")) //clu hlt io
 
 /*
 Bigger is Greater
@@ -2161,8 +2161,47 @@ biggerIsGreater has the following parameter(s):
     string w: a word
 */
 
+function lastIndexOf(str, c, stop) {
+    for (let i = str.length - 1; i >= stop; i--) {
+        if (str.charAt(i) === c) {
+            return i
+        }
+    }
+    
+    return -1
+}
+
 function biggerIsGreater(w) {
-  // Write your code here
+    
+    if (w.length === 1) {
+        return 'no answer'
+    }
+    
+    const end = 'z'.charCodeAt(0)
+    
+    for (let i = w.length - 2; i >= 0; i--) {
+        for (let x = w.charCodeAt(i) + 1; x <= end; x++) {
+            
+            const c = String.fromCharCode(x)            
+            const index = lastIndexOf(w, c, i + 1)
+            
+            if (index !== -1) {
+                const s = w.split('')
+                const t = s[i]
+                s[i] = s[index]
+                s[index] = t
+                
+                const part1 = s.slice(0, i + 1)
+                const part2 = s.slice(i + 1)
+                
+                part2.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0))
+                
+                return [part1, part2].map(it => it.join('')).join('')
+            }
+        }
+    }
+    
+    return 'no answer'
 }
 
 log(biggerIsGreater("ab")) //ba
@@ -2170,3 +2209,5 @@ log(biggerIsGreater("bb")) //no answer
 log(biggerIsGreater("hefg")) //hegf
 log(biggerIsGreater("dhck")) //dhkc
 log(biggerIsGreater("dkhc")) //hcdk
+log(biggerIsGreater("abdc")) //acbd
+
